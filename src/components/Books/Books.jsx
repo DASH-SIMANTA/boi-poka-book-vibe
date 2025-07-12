@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Book from "../Book/Book";
 
 
 const Books = () => {
@@ -11,9 +12,14 @@ const Books = () => {
             .catch(error => console.error('Error fetching books:', error));
     }, []);
     return (
-        <div>
+        <div className="bg-gray-800 p-6 rounded-lg">
             <h2 className="text-4xl font-bold text-center">Books</h2>
-            <p>{books.length}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+                
+                {
+                    books.map(book => <Book book={book} key={book.bookId}></Book>)
+                }
+            </div>
         </div>
     );
 };

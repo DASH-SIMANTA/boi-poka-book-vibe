@@ -4,7 +4,8 @@ import { NavLink } from "react-router-dom";
 const NavBar = () => {
     const links = <>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><a>aaa</a></li>
+        <li><a>Listed Books</a></li>
+        <li><a>Page To Read</a></li>
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm">
@@ -27,9 +28,11 @@ const NavBar = () => {
                     {links}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
+            <div className="navbar-end gap-2">
+                <a className="btn">Sign In</a>
+                <a className="btn">Sign Up</a>
             </div>
+            
         </div>
     );
 };
