@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
+import { ToastContainer } from 'react-toastify';
 
 import {
   createBrowserRouter,
@@ -11,6 +12,7 @@ import ErrorPage from './components/ErrorPage/ErrorPage';
 import Home from './components/Home/Home';
 import DashBoard from './components/DashBoard/DashBoard';
 import BookDetail from './components/BookDetail/BookDetail';
+import ListedBooks from './components/ListedBooks/ListedBooks';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,6 +26,13 @@ const router = createBrowserRouter([
       {
         path: "books/:bookId",
         element: <BookDetail></BookDetail>,
+        loader:() => fetch('/booksData.json') //Do not load all books data, just the one that matches the bookId.
+      },
+      {
+        path:'listed-books',
+        element: <ListedBooks></ListedBooks>,
+        loader: () => fetch('/booksData.json') //worst way to load all books data, but for now it works.
+
       },
        {
         path: "dashboard",
@@ -34,6 +43,7 @@ const router = createBrowserRouter([
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router} fallbackElement={<p>Loading...</p>}/>
+     <ToastContainer />
   </StrictMode>,
 )
