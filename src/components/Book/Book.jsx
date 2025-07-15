@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 
 const Book = ({ book }) => {
-    const { bookId,bookName, image, author, tags, category } = book;
+    const { bookId,bookName, image, author, tags, category,rating,totalPages,yearOfPublishing } = book;
     return (
         <div className="no-underline">
             <div className="card bg-base-100 w-96 shadow-sm p-6 bg-white-400">
@@ -32,9 +32,12 @@ const Book = ({ book }) => {
                     <p>By: {author}</p>
                     <div className="divider"></div>
 
-                    <div className="card-actions justify-end">
+                    <div className="card-actions flex gap-2">
                         <div className="badge badge-outline">{category}</div>
-                        <div className="rating">
+                        <div>{totalPages}</div>
+                        <div>{yearOfPublishing}</div>
+                        <div>{rating}</div>
+                        <div className="rating rating-sm">
                             <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-800" aria-label="1 star" />
                             <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-600" aria-label="2 star" defaultChecked />
                             <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-600" aria-label="3 star" />
