@@ -1,6 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import { addToStoredReadList } from "../../utility/addToDB";
 import { addToStoredWishList } from "../../utility/addToWishList";
+import { Helmet } from "react-helmet-async";
 
 
 const BookDetail = () => {
@@ -51,6 +52,9 @@ const BookDetail = () => {
 
     return (
         <div className="hero bg-base-200 min-h-screen">
+            <Helmet>
+                <title>Book Detail | {bookId}</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row">
                 <img
                     src={image}
